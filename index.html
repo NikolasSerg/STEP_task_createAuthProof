@@ -15,12 +15,14 @@
     </form>
 
     <script>
+      var body = document.querySelector("body");
+      var p = document.createElement("p");
       var userLogin = {};
       var trueLog = [
         { login: "vasul", password: 123 },
         { login: "kolya", password: 1243 }
       ];
-    
+
       var failLog = [];
       var rez = "";
 
@@ -34,24 +36,36 @@
         };
         console.log(userLogin);
 
-               userMark: for (const i of trueLog) {
+        let rez = "";
+
+        userMark: for (const i of trueLog) {
           if (
             i.login === userLogin.login &&
             i.password === parseInt(userLogin.password)
           ) {
             console.log("i.login === userLogin.login", i, true);
+            rez = "succesful";
             break userMark;
           } else {
             console.log("i.login === userLogin.login", i, false);
+            rez = "try again";
           }
+        }
+        if (rez === "try again") {
           let date = new Date();
           failLog.push({
             password: userLogin.password,
             login: userLogin.login,
             date
           });
-          console.log(failLog);
+          p.innerText = rez;
+        } else {
+          console.log(rez, " - rez");
+
+          p.innerText = rez;
         }
+        body.appendChild(p);
+        console.log(failLog);
       };
     </script>
   </body>
