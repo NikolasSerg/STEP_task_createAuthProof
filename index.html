@@ -1,0 +1,58 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta http-equiv="X-UA-Compatible" content="ie=edge" />
+    <title>Document</title>
+  </head>
+  <body>
+    <form>
+      <input type="text" placeholder="login" name="login" />
+      <input type="password" placeholder="password" name="password" />
+      <br />
+      <button type="submit" onclick="pressBtn(event)">press</button>
+    </form>
+
+    <script>
+      var userLogin = {};
+      var trueLog = [
+        { login: "vasul", password: 123 },
+        { login: "kolya", password: 1243 }
+      ];
+    
+      var failLog = [];
+      var rez = "";
+
+      pressBtn = event => {
+        event.preventDefault();
+        console.log(document.forms[0].login.value);
+        console.log(document.forms[0].password.value);
+        userLogin = {
+          login: document.forms[0].login.value,
+          password: document.forms[0].password.value
+        };
+        console.log(userLogin);
+
+               userMark: for (const i of trueLog) {
+          if (
+            i.login === userLogin.login &&
+            i.password === parseInt(userLogin.password)
+          ) {
+            console.log("i.login === userLogin.login", i, true);
+            break userMark;
+          } else {
+            console.log("i.login === userLogin.login", i, false);
+          }
+          let date = new Date();
+          failLog.push({
+            password: userLogin.password,
+            login: userLogin.login,
+            date
+          });
+          console.log(failLog);
+        }
+      };
+    </script>
+  </body>
+</html>
